@@ -27,6 +27,12 @@ public class PassengerAdapter extends PagingDataAdapter<PassengerModel.Data,Pass
     }
 
     @Override
+    public int getItemCount() {
+        Log.d("getItemCount", super.getItemCount() + "");
+        return super.getItemCount();
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d("onBindViewHolder", getItem(position).toString());
         if (getItem(position) != null){
