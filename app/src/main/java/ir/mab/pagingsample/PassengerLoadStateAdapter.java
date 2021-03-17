@@ -15,6 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 public class PassengerLoadStateAdapter extends LoadStateAdapter<PassengerLoadStateAdapter.ViewHolder> {
+    private View.OnClickListener mRetryCallback;
+
+    public PassengerLoadStateAdapter(View.OnClickListener mRetryCallback) {
+        this.mRetryCallback = mRetryCallback;
+    }
+
     @Override
     public void onBindViewHolder(@NotNull ViewHolder viewHolder, @NotNull LoadState loadState) {
         viewHolder.bind(loadState);
@@ -37,6 +43,7 @@ public class PassengerLoadStateAdapter extends LoadStateAdapter<PassengerLoadSta
             mProgressBar = itemView.findViewById(R.id.progressBar);
             mErrorMsg = itemView.findViewById(R.id.errorMsg);
             mRetry = itemView.findViewById(R.id.retryButton);
+            mRetry.setOnClickListener(mRetryCallback);
         }
 
         public void bind(LoadState loadState) {

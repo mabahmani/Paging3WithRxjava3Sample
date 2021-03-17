@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.list);
         passengerViewModel = new ViewModelProvider(this).get(PassengerViewModel.class);
         passengerAdapter = new PassengerAdapter(new PassengerComparator());
-        loadStateAdapter = new PassengerLoadStateAdapter();
+        loadStateAdapter = new PassengerLoadStateAdapter(v -> passengerAdapter.retry());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(
                 passengerAdapter.withLoadStateFooter(loadStateAdapter)
